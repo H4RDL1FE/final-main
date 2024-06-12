@@ -26,15 +26,18 @@ jobs:
     - name: Install dependencies
       run: |
         go mod tidy
+      working-directory: ./
 
     - name: Lint with golint
       run: |
         go install golang.org/x/lint/golint@latest
         golint ./...
+      working-directory: ./
 
     - name: Run tests
       run: |
         go test ./...
+      working-directory: ./
 
   publish:
     needs: test
